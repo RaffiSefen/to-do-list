@@ -6,10 +6,15 @@ const cors = require("cors")
 
 const app = express()
 
-connectToDb()
 app.use(cors())
+connectToDb()
 app.use(express.static("frontend"))
 app.use(express.json())
+app.use("/test", (req, res) => {
+    res.send("This is a test endpoint")
+})
+
+
 const port = process.env.PORT
 app.use("/api", itemRouter)
 app.listen(port, () => {
