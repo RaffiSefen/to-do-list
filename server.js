@@ -5,9 +5,10 @@ const dotenv = require('dotenv').config()
 const cors = require("cors")
 
 const app = express()
+
+connectToDb()
 app.use(cors())
 app.use(express.static("frontend"))
-connectToDb()
 app.use(express.json())
 const port = process.env.PORT
 app.use("/api", itemRouter)
