@@ -4,7 +4,7 @@ let items = []
 
 let postEndpoint = "http://localhost:3000/api/new/item"
 let getEndpoint = "http://localhost:3000/api/all/items"
-
+let deleteEndpoint = "http://localhost:3000/api/delete/item/"
 
 const getData = async () => {
     let res = await fetch(getEndpoint);
@@ -26,22 +26,29 @@ const displayData = async () => {
         console.log('item', item)
 
         let newP = document.createElement("p")
+        let deleteBtn = document.createElement("a")
+
+        newP.setAttribute("class", "text-success")
+        deleteBtn.setAttribute("class", "btn btn-outline-danger")
+        deleteBtn.setAttribute("href", "index.html")
 
         newP.innerHTML = item.name + "   " + item.time
+        deleteBtn.innerHTML = "X"
 
         newDiv.appendChild(newP)
+        newDiv.appendChild(deleteBtn)
+
+        deleteBtn.addEventListener("click", async () => {
+            await fetch(`${deleteEndpoint}${item._id}`, {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
+            console.log('item has been deleted')
+        })
     })
 }
-
-
-
-
-
-
-
-
-
-
 
 form.addEventListener("submit", async (e) => {
     e.preventDefault()
