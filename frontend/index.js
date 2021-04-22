@@ -45,7 +45,7 @@ const displayData = async () => {
                     "Content-Type": "application/json"
                 }
             })
-            console.log('deleted item')
+            console.log('item has been deleted')
         })
     })
 }
