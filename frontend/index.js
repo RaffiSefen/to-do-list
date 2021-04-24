@@ -27,16 +27,23 @@ const displayData = async () => {
 
         let newP = document.createElement("p")
         let deleteBtn = document.createElement("a")
+        let updateBtn = document.createElement("a")
+
 
         newP.setAttribute("class", "text-success")
         deleteBtn.setAttribute("class", "btn btn-outline-danger")
         deleteBtn.setAttribute("href", "index.html")
+        updateBtn.setAttribute("class", "btn btn-outline-warning")
+        updateBtn.setAttribute("href", `edit.html?id=${item._id}`)
 
         newP.innerHTML = item.name + "   " + item.time
         deleteBtn.innerHTML = "X"
+        updateBtn.innerHTML = "Update"
+
 
         newDiv.appendChild(newP)
         newDiv.appendChild(deleteBtn)
+        newDiv.appendChild(updateBtn)
 
         deleteBtn.addEventListener("click", async () => {
             await fetch(`${deleteEndpoint}${item._id}`, {

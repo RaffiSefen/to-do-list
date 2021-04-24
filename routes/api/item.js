@@ -35,6 +35,7 @@ router.post("/new/item", async (req, res) => {
 })
 
 router.put("/update/item/:id", async (req, res) => {
+    console.log(req.body)
     let foundedItem = await Item.findById(req.params.id)
     if (foundedItem) {
         let updatedItem = await Item.findByIdAndUpdate(req.params.id, req.body, { new: true })
