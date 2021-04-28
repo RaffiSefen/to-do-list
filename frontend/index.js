@@ -33,12 +33,12 @@ const displayData = async () => {
         newP.setAttribute("class", "text-success")
         deleteBtn.setAttribute("class", "btn btn-outline-danger")
         deleteBtn.setAttribute("href", "index.html")
-        updateBtn.setAttribute("class", "btn btn-outline-warning")
+        updateBtn.setAttribute("class", "btn btn-outline-success ml-2")
         updateBtn.setAttribute("href", `edit.html?id=${item._id}`)
 
         newP.innerHTML = item.name + "   " + item.time
         deleteBtn.innerHTML = "X"
-        updateBtn.innerHTML = "Update"
+        updateBtn.innerHTML = "Edit"
 
 
         newDiv.appendChild(newP)
