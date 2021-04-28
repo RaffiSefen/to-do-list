@@ -1,10 +1,11 @@
 const express = require('express');
+const authMiddleware = require('../../middlewares/auth');
 const Item = require('../../model/Item');
 const router = express.Router()
 
 
 
-router.get("/all/items", async (req, res) => {
+router.get("/all/items", authMiddleware, async (req, res) => {
     let allFoundedItems = await Item.find()
     res.send(allFoundedItems)
 })
