@@ -10,6 +10,8 @@ const port = process.env.PORT
 connectToDb()
 
 app.use(cors())
+
+
 app.use(express.static("frontend"))
 app.use(express.json())
 
