@@ -31,13 +31,14 @@ router.post("/signup", async (req, res) => {
 })
 
 router.post("/login", async (req, res) => {
+    console.log(req.body)
     const { email, password } = req.body
     const foundedUser = await User.findOne({ email })
     if (foundedUser) {
         const matched = await bcrypt.compare(password, foundedUser.password)
         console.log('matched', matched)
         if (matched) {
-            res.send("You are now logged in")
+            res.redirect("http://localhost:3000/index.html")
         } else {
             res.send("Sorry dude, this password is not correct")
         }
